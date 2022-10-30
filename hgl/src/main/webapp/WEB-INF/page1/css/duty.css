@@ -1,0 +1,248 @@
+
+/* 日历牌盒子 */
+.calendar-box{
+    display: flex;
+    max-width: 470px;
+    margin: 0 auto;
+    box-sizing: border-box;
+    border: 2px solid #8086FD;
+    border-radius: 25px;
+}
+/* left */
+.c-left{
+    position: relative;
+    background-color: #E4E9FD;
+    border-radius: 25px 0 0px 25px;
+    border-right: 2px solid #8086FD;
+}
+
+/* top */
+.c-top{
+    position: relative;
+    height: 25px;
+    line-height: 25px;
+    text-align: center;
+}
+.c-top a{
+    position: absolute;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    font-size: 25px;
+}
+.c-top a:nth-child(1){
+    left: 10%;
+}
+.c-top a:nth-child(3){
+    right: 10%;
+}
+#year-month{
+    font-weight: bold;
+}
+/* calendar */
+#calendar{
+    padding: 0 15px;
+    border-top: 1px solid #8086FD;
+}
+
+#calendar th, #calendar td{
+    width: 50px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+}
+/* 淡色字体 */
+.light{
+    color: #BFC4D8;
+}
+/* 背景绿色&圆形边框 */
+.bc{
+    position: relative;
+    background-color: #98D0CB;
+    color: white;
+    border-radius: 10px;
+}
+
+/* 边框 */
+.bk{
+    display: block;
+    border: 10px solid transparent;
+    border-left: 12px solid white;
+    transform: translate(10px,2px);
+}
+/* 反转 */
+.fz1{
+    transform: rotate(180deg) translate(10px,-2px);
+}
+.bk:active{
+    border-left-color: turquoise;
+}
+/* right */
+.c-right{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0 5px;
+    border-radius: 0 25px 25px 0;
+    background-color: #D7F5F7;
+}
+/*  */
+#r-month{
+    line-height: 25px;
+    font-size: 14px;
+    color: rgb(34, 105, 34);
+}
+
+/* day */
+.day{
+    padding: 10px;
+    border-radius: 15px;
+    font-size: 48px;
+    color: white;
+    background-color: #99C2F3;
+}
+
+/* sign-in */
+.sign-in{
+    display: flex;
+    flex-direction: column;
+}
+.sign-in a{
+    display: block;
+    padding: 3px 15px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 12px;
+}
+.sign-in a:nth-child(1){
+    margin-top: 20px;
+    background-color: rgb(0, 255, 149);
+    color: rgb(42, 134, 255);
+}
+.sign-in a:nth-child(1):active{
+    background-color: rgb(42, 134, 255);
+    color: white;
+}
+.sign-in a:nth-child(2){
+    margin-top: 5px;
+    background-color: #f5d625;
+    color: #000;
+}
+.sign-in a:nth-child(2):active{
+    background-color: #25d6f5;
+    color: white;
+}
+.sign-in a:nth-child(3){
+    margin-top: 5px;
+    background-color: #4efdd4;
+    color: #000;
+}
+.sign-in a:nth-child(3):active{
+    background-color: #25d6f5;
+    color: white;
+}
+
+/* 当天签到 */
+.tody{
+    position: relative;
+}
+/* 标签 */
+.tips{
+    position: relative;
+    display: flex;
+    width: 150px;
+    line-height: 30px;
+    overflow: hidden;
+    text-align: center;
+    color: white;
+    font-weight: bold;
+    margin: 20px 0 10px 0;
+}
+.item-box{
+    display: block;
+    border: 15px solid transparent;
+    border-left: 15px solid #A7B7F9;
+    background-color: transparent;
+}
+.tips span{
+    display: block;
+    padding: 0 5px;
+    margin: 0;
+    background-color: #A7B7F9;
+}
+/* 表格 */
+.t-table {
+    width: 100%;
+    border-collapse: 0;
+    border-spacing: 0;
+}
+.t-table th{
+    color: white;
+}
+.t-table th, .t-table td{
+    padding: 5px 0;
+    border-bottom: 1px solid blue;
+    text-align: center;
+}
+
+.t-table-box{
+    background-color: #85E6AE;
+}
+.t-table-box td:nth-child(2), .t-table-box th:nth-child(2){
+    border-left: 1px solid blue;
+    color: white;
+}
+.m-table-box{
+    background-color: #7ADDE6;
+}
+.m-table-box td:nth-child(2), .m-table-box th:nth-child(2){
+    border-right: 1px solid blue;
+    border-left: 1px solid blue;
+    color: white;
+}
+.m-table-box th:nth-child(1){
+    width: 200px;
+}
+/* 签到盒子 */
+.sign-box{
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(192, 192, 192, 0.4);
+}
+.s-box{
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    width: 50vw;
+    padding: 15px 15px 15px 35px;
+    transform: translate(-50%, -40%);
+    text-align: center;
+    background-color: rgb(217, 239, 241);
+    box-shadow: 5px 5px 10px #999,-5px -5px 10px #999;
+    border-radius: 10px;
+    transition: background-color 2s;
+}
+.s-content div{
+    margin-top: 4px;
+    text-align: left;
+    font-weight: bold;
+}
+.s-content span{
+    font-weight: 400;
+}
+.s-content button{
+    margin-top: 20px;
+    margin-left: -15px;
+    padding: 5px 10px;
+    border: none;
+    background-color: rgb(167, 206, 211);
+    font-size: 2rem;
+    color: white;
+}
+.s-content button:active{
+    color: black;
+    background-color: #25F595;
+}
+

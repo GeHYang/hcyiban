@@ -1,0 +1,211 @@
+.right-box-main{
+  background-color: transparent;
+  border: none;
+}
+.info{
+  user-select: none;
+  overflow: hidden;
+  position: relative;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  padding: 20px;
+  border: 5px solid white;
+  border-radius: 5px;
+  box-shadow: 0 0 30px #999;
+}
+.info-head{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.info-head img{
+  width: 100px;
+  height: 100px;
+  margin: 0 10px 10px 0;
+  border-radius: 50%;
+  box-shadow: 0 0 50px #aaa;
+}
+.info-head span{
+  display: block;
+  width: 100px;
+  margin-bottom: 10px;
+  text-align: center;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 14px;
+  color: rgb(50, 208, 74);
+}
+.info-head button{
+  padding: 3px 10px;
+  background-color: red;
+  color: white;
+  border: 1px solid white;
+  border-radius: 5px;
+}
+.info-head button:hover, .confirmBtn:hover{
+  background-color: rgb(220, 0, 0);
+}
+/* 个人资料表 */
+.orther{
+  position: relative;
+}
+.orther-tb{
+  margin-left: 20px;
+}
+.orther-tb td{
+  overflow: hidden;
+  display: inline-block;
+  width: 50px;
+  height: 40px;
+  margin-right: 5px;
+  line-height: 40px;
+  text-align: justify;
+  font-size: 16px;
+}
+.orther-tb td i{
+  display: inline-block;
+  width: 100%;
+}
+.orther-tb td:nth-child(2), .orther-tb td:nth-child(5){
+  width: 200px;
+}
+.orther-tb td input, .orther-tb td select{
+  box-sizing: border-box;
+  width: 200px;
+  padding: 5px;
+  outline: none;
+  border: none;
+  background-color: rgba(255, 255, 255, .5);
+}
+.orther-tb td select{
+  width: 230px;
+}
+.orther-tb td input:valid, .orther-tb td select:valid{
+  color: green;
+  font-weight: bold;
+}
+/* 修改个人信息按钮 */
+.resetInfo, .confirmBtn, .cancelBtn{
+  position: absolute;
+  left: 420px;
+  bottom: 25px;
+  padding: 3px 10px;
+  background-color: red;
+  color: white;
+  border: 1px solid white;
+  border-radius: 5px;
+}
+.confirmBtn{
+  left: 470px;
+  background-color: green;
+}
+.cancelBtn{
+  left: 370px;
+  background-color: #ccc;
+}
+.cancelBtn:hover{
+  background-color: #999;
+}
+/* 修改密码 */
+.auth-box{
+  z-index: 10000;
+  position: fixed;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(161,163,161, .1);
+}
+.auth-box form{
+  user-select: none;
+  padding: 15px 20px 15px 20px;
+  background-color: #ccc;
+  box-shadow: 0 0 10px rgba(58, 53, 53, 0.6);
+}
+.auth-box section{
+  position: relative;
+  width: 200px;
+  margin-top: 20px;
+}
+.auth-box section input{
+  box-sizing: border-box;
+  width: 200px;
+  height: 30px;
+  line-height: 30px;
+  padding: 5px 3px;
+  border: 2px solid #ccc;
+  border-right: 3px solid green;
+  border-radius: 5px 0% 0% 5px;
+  font-size: 18px;
+  outline: none;
+  color: rgb(46, 125, 194);
+  text-align: center;
+}
+.auth-box section label{
+  display: block;
+  position: absolute;
+  top: 0;
+  width: 200px;
+  height: 30px;
+  line-height: 30px;
+  color: #777;
+  text-align: center;
+}
+.auth-box section input:valid{
+  border-right: 10px solid;
+  border-color: green;
+}
+.auth-box section input:valid + label{
+  top: -25px;
+  color: green;
+  font-size: 14px;
+}
+.auth-box section input:focus{
+  border-right: 10px solid;
+  border-color: green;
+}
+.auth-box section input:focus + label{
+  top: -25px;
+  color: green;
+  font-size: 14px;
+}
+.auth-box section:nth-last-child(1){
+  display: flex;
+  justify-content: space-around;
+}
+.auth-box section button{
+  display: block;
+  box-sizing: border-box;
+  padding: 2px 15px;
+  font-size: 16px;
+  border: 2px groove;
+  box-shadow: 0 0 3px rgb(228, 228, 228);
+}
+.auth-box section button:nth-child(1){
+  background-color: rgb(161, 157, 157);
+  color: white;
+}
+.auth-box section button:nth-child(2){
+  background-color: rgb(19, 163, 51);
+  color: white;
+}
+.auth-box section button:active{
+  background-color: rgb(122, 113, 113);
+  color: azure;
+}
+/* 修改头像 */
+#editHeadIcon input[type='file']{
+  position: fixed;
+  top: -1000px;
+  visibility: hidden;
+}
+.changeFile input[type='button']{
+  height: 40px !important;
+}

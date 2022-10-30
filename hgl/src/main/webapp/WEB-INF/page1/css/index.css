@@ -1,0 +1,61 @@
+
+/* 顶部 */
+.header{
+    z-index: 100;
+    display: flex;
+    justify-content: center;
+    position: sticky;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: white;
+    font-size: 20px;
+    font-weight: bold;
+}
+/* 顶部文字 */
+#h_text{
+    line-height: 5rem;
+    color: black;
+}
+
+/* 子页面 */
+#iframe{
+    width: 100%;
+}
+
+/* 底部导航栏 */
+.nav{
+    display: flex;
+    z-index: 100;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    box-sizing: border-box;
+    width: 100%;
+    height: 50px;
+    border-top: 1px solid #ccc;
+    box-shadow: 0 0 5px #ccc;
+    background-color: #ececec;
+}
+/* 导航项 */
+.nav a{
+    display: flex;
+    flex-direction: column;
+    padding: 5px 0 5px 0;
+    width: 33.33%;
+    color: #928f8f;
+    background-color: transparent;
+}
+.nav a span{
+    width: 100%;
+    text-align: center;
+}
+/* 图标 */
+.nav a span:nth-child(1){
+    font-size: 2.2rem;
+}
+/* 文字 */
+.nav a span:nth-child(2){
+    color: black;
+    font-size: 1.3rem;
+}

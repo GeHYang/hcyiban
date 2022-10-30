@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>成员情况</title>
+  <!-- icomoon图标库 -->
+  <link rel="stylesheet" href="../../font/style.css">
+  <link rel="stylesheet" href="../../css/public.css">
+  <link rel="stylesheet" href="./index.css">
+  <script src="../../js/jquery.js"></script>
+  <script src="../../js/public.js"></script>
+  <script src="./index.js"></script>
+</head>
+<body>
+  <!-- 头部 -->
+  <header>
+    <div class="h-left">
+      <a href="../../index.html">
+        <img src="../../imgs/yiban.png">
+        <span>后台管理系统</span>
+      </a>
+    </div>
+    <div class="h-right">
+      <img class="headIcon" src="../..//imgs/headIcon.jpeg" alt="">
+      <div class="h-right-info">
+        <a><span id="h-right-name"></span>
+          <ul class="h-right-ul">
+            <li onclick="exit()">退出登录</li>
+            <i></i>
+          </ul>
+        </a>
+      </div>
+    </div>
+  </header>
+  <div class="main">
+    <!-- left -->
+    <div class="left">
+      <div class="nav">
+        <ul class="nav-list">
+          <li class="nav-item">成员管理<i class="triangle-down"></i>
+            <ul class="nav2-list">
+              <li class="nav2-item" onclick="location.href = '../member/index.html'" style="background-color: #c782c2;color: white;">成员情况</li>
+            </ul>
+          </li>
+          <li class="nav-item">值班管理<i class="triangle-down"></i>
+            <ul class="nav2-list">
+              <li class="nav2-item" onclick="location.href = '../duty/duty_table.html'">值班表</li>
+              <li class="nav2-item" onclick="location.href = '../duty/index.html'">值班情况</li>
+              <li class="nav2-item" onclick="location.href = '../duty/count.html'">值班统计</li>
+              <li class="nav2-item" onclick="location.href = '../duty/repair.html'">值班补签</li>
+              <li class="nav2-item" onclick="location.href = '../duty/leave.html'">值班请假</li>
+            </ul>
+          </li>
+          <li class="nav-item">会议管理<i class="triangle-down"></i>
+            <ul class="nav2-list">
+              <li class="nav2-item" onclick="location.href = '../meeting/index.html'">会议情况</li>
+              <li class="nav2-item" onclick="location.href = '../meeting/count.html'">会议统计</li>
+              <li class="nav2-item" onclick="location.href = '../meeting/leave.html'">会议请假</li>
+            </ul>
+          </li>
+          <li class="nav-item" onclick="location.href = '../edit/index.html'">设置
+          </li>
+        </ul>
+      </div>
+    </div>
+    <!-- right -->
+    <div class="right">
+      <div class="popup">
+        <!-- 添加成员 -->
+        <section class="add-member">
+          <form id="add-member" onsubmit="return false;">
+            <table class="add-tb">
+              <tr>
+                <th colspan="5"><h2>添加成员</h2></th>
+              </tr>
+              <tr>
+                <td>学号<i></i></td>
+                <td><input type="text" id="sid" placeholder="请输入学号" required></td>
+                <td></td>
+                <td>姓名<i></i></td>
+                <td><input type="text" id="sname" placeholder="请输入姓名" required></td>
+              </tr>
+              <tr>
+                <td>部门<i></i></td>
+              <td><select id="dname" required>
+                  <option value="">未选择</option>
+                  <option value="1001">主席团</option>
+                  <option value="1002">行政办公室</option>
+                  <option value="1003">新闻采编部</option>
+                  <option value="1004">视觉传达部</option>
+                  <option value="1005">运营推广部</option>
+                  <option value="1006">优课开发部</option>
+                  <option value="1007">技术研发部</option>
+                  <option value="1008">新媒体部</option>
+                  <option value="1009">思政编辑部</option>
+                  <select></td>
+              <td></td>
+              <td>职称<i></i></td>
+              <td><select id="tname" required>
+                  <option value="">未选择</option>
+                  <option value="1001">主席</option>
+                  <option value="1002">副主席</option>
+                  <option value="1003">秘书长</option>
+                  <option value="1004">副秘书长</option>
+                  <option value="1005">部长</option>
+                  <option value="1006">副部长</option>
+                  <option value="1007">干事</option>
+                  <select>
+                </td>
+              </tr>
+              <tr>
+                <td>Q Q<i></i></td>
+                <td><input type="text" id="qq" placeholder="QQ号" required></td>
+                <td></td>
+                <td>手机<i></i></td>
+                <td><input type="text" id="phone" placeholder="手机号" required></td>
+              </tr>
+              <tr>
+                <td style="width: 155px;"></td>
+                <td style="width: 55px;text-align: justify;">院系<i></i></td>
+                <td style="width: auto;">
+                  <select id="cname" required>
+                    <option value="">请选择</option>
+                    <option value="文学与传媒学院">文学与传媒学院</option>
+                    <option value="公共管理学院">公共管理学院</option>
+                    <option value="马克思主义学院">马克思主义学院</option>
+                    <option value="数理学院">数理学院</option>
+                    <option value="人工智能与制造学院">人工智能与制造学院</option>
+                    <option value="化学与生物工程学院">化学与生物工程学院</option>
+                    <option value="体育学院">体育学院</option>
+                    <option value="音乐舞蹈学院">音乐舞蹈学院</option>
+                    <option value="美术与设计学院">美术与设计学院</option>
+                    <option value="商学院">商学院</option>
+                    <option value="大数据与计算机学院">大数据与计算机学院</option>
+                    <option value="外国语学院">外国语学院</option>
+                    <option value="教师教育学院">教师教育学院</option>
+                    <select>
+                </td>
+                <td></td>
+              </tr>
+              <tr>
+                <td></td>
+                <td></td>
+                <td><button class="cancelBtn" type="reset" onclick="closeMember('add-member')">取消</button></td>
+                <td><button class="confirmBtn" onclick="confirmBtn()">确定</button></td>
+                <td></td>
+              </tr>
+            </table>
+          </form>
+        </section>
+        <!-- 导入 -->
+        <section class="import-excel-box">
+          <section>
+            <h2>导入信息模板</h2>
+            <span style="color: red;">注意：必须严格按照模板规范上传</span>
+            <section class="icon-box" onclick="downloadExcel()">
+              <span class="icon-file-excel excel-icon"></span>
+              <a>模板下载</a>
+            </section>
+          </section>
+          <seciont class="import-excel">
+            <form id="import-member-excel" onsubmit="return false;" enctype="multipart/form-data">
+              <input type="file" name="file" onchange="showFileName(this)" id="file">
+              <span id="filename"></span>
+              <input type="button" onclick="document.getElementById('file').click()" value="选择文件">
+              <br/>
+              <input type="reset" class="importBtn" onclick="closeMember('import-excel-box')" value="取消导入"/>
+              <br>
+              <input type="button" class="importBtn" onclick="import_excel()" value="导入信息"/>
+              <span id="success_text"></span><!-- 导入成功 -->
+              <span id="exists_text"></span><!-- 已存在 -->
+            </form>
+          </seciont>
+        </section>
+      </div>
+      <div class="right-box">
+        <div class="right-box-h">
+          <span class="nav1-title">
+            成员管理
+          </span>
+          <span class="nav2-title">
+            成员情况
+          </span>
+        </div>
+        <div class="right-box-main">
+          <div class="right-box-main-top">
+            <input type="text" id="queryString" placeholder="学号/姓名">
+            <input type="button" onclick="queryMembers(document.querySelector('#queryString').value)" value="查询">
+            <input type="button" onclick="showAddMember('add-member')" value="添加">
+            <input type="button" onclick="showAddMember('import-excel-box')" value="导入" />
+          </div>
+          <div class="right-box-tb">
+            <table id="r-b-tb" cellspacing="0" cellpadding="0">
+              <thead>
+                <tr>
+                  <th>学号</th>
+                  <th>姓名</th>
+                  <th>部门</th>
+                  <th>职称</th>
+                  <th>院系</th>
+                  <th>QQ</th>
+                  <th>手机</th>
+                  <th>操作</th>
+                </tr>
+              </thead>
+              <tbody></tbody>
+            </table>
+          </div>
+          <div class="page-number">
+            <ul>
+              <li id="count">共2条</li>
+              <li id="page"><i><</i> <span>1</span> <i>></i></li>
+              <li id="target">
+                前往<input type="text" value="1">页
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

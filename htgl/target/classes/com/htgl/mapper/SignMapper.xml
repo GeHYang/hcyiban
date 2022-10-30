@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.htgl.mapper.SignMapper">
+    <!-- 签到 -->
+    <insert id="sign" parameterType="com.htgl.pojo.Sign">
+        insert into sign
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            sid,sname,
+            <if test="department != null and department !=''">
+                department,
+            </if>
+            <if test="title != null and title !=''">
+                title,
+            </if>
+            <if test="other != null and other !=''">
+                other,
+            </if>
+            <if test="comment != null and comment !=''">
+                comment,
+            </if>
+            time,
+        </trim>
+            values
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            #{sid},#{sname},
+            <if test="department != null and department !=''">
+                #{department},
+            </if>
+            <if test="title != null and title !=''">
+                #{title},
+            </if>
+            <if test="other != null and other !=''">
+                #{other},
+            </if>
+            <if test="comment != null and comment !=''">
+                #{comment},
+            </if>
+            NOW(),
+        </trim>
+    </insert>
+    <!-- 查询是否签到 -->
+    <select id="existsSign" parameterType="java.lang.String" resultType="com.htgl.pojo.Sign">
+        select * from sign where sid = #{sid}
+    </select>
+</mapper>

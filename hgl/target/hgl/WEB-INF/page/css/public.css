@@ -1,0 +1,67 @@
+html{
+    font-size: 62.5%;/* 1rem=10px */
+}
+body{
+    background-image: linear-gradient(to bottom, #a4e8d6, #85E6AE, #ececec);
+    font-size: 16px;
+    height: 100vh;
+    user-select: none;
+}
+a{text-decoration: none;color: black;}
+.view{
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    min-width: 320px;
+    max-width: 1080px;
+    height: 100vh;
+}
+
+/* 主体 */
+.main{
+    width: 100%;
+}
+
+/* 顶部 */
+.header1{
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    display: flex;
+    width: 100%;
+    background-color: white;
+    font-size: 20px;
+    font-weight: bold;
+}
+.header1 a{
+    width: 33.3%;
+}
+/* 顶部文字 */
+#h_text{
+    line-height: 5rem;
+    text-align: center;
+}
+/* 返回 */
+#back{
+    position: relative;
+}
+/* 返回按钮样式 */
+#backBtn{
+    display: block;
+    position: absolute;
+    left: 2%;
+    width: 15px;
+    height: 15px;
+    box-sizing: border-box;
+    margin: 17.5px 0;
+    border-top: 1px solid;
+    border-left: 1px solid;
+    transform: translate(50%,0) rotate(-45deg);
+}
+#h_right{
+    line-height: 5rem;
+    text-align: right;
+    box-sizing: border-box;
+    padding-right: 10px;
+    font-size: 16px;
+}

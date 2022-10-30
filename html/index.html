@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>后台管理系统</title>
+  <link rel="stylesheet" href="./css/index.css">
+  <link rel="stylesheet" href="./css/public.css">
+  <script src="./js/jquery.js"></script>
+  <script src="./js/public.js"></script>
+  <script src="./js/E.js"></script>
+  <script src="./js/index.js"></script>
+</head>
+<body>
+
+  <!-- 头部 -->
+  <header>
+    <div class="h-left">
+      <a href="../../index.html">
+        <img src="../../imgs/yiban.png">
+        <span>后台管理系统</span>
+      </a>
+    </div>
+    <div class="h-right">
+      <img class="headIcon" src="" alt="">
+      <div class="h-right-info">
+        <a><span id="h-right-name"></span>
+          <ul class="h-right-ul">
+            <li onclick="exit()">退出登录</li>
+            <i></i>
+          </ul>
+        </a>
+      </div>
+    </div>
+  </header>
+  <div class="main">
+    <!-- left -->
+    <div class="left">
+      <div class="nav">
+        <ul class="nav-list">
+          <li class="nav-item">成员管理<i class="triangle-down"></i>
+            <ul class="nav2-list">
+              <li class="nav2-item" onclick="location.href = './pages/member/index.html'">成员情况</li>
+            </ul>
+          </li>
+          <li class="nav-item">值班管理<i class="triangle-down"></i>
+            <ul class="nav2-list">
+              <li class="nav2-item" onclick="location.href = './pages/duty/duty_table.html'">值班表</li>
+              <li class="nav2-item" onclick="location.href = './pages/duty/index.html'">值班情况</li>
+              <li class="nav2-item" onclick="location.href = './pages/duty/count.html'">值班统计</li>
+              <li class="nav2-item" onclick="location.href = './pages/duty/repair.html'">值班补签</li>
+              <li class="nav2-item" onclick="location.href = './pages/duty/leave.html'">值班请假</li>
+            </ul>
+          </li>
+          <li class="nav-item">会议管理<i class="triangle-down"></i>
+            <ul class="nav2-list">
+              <li class="nav2-item" onclick="location.href = './pages/meeting/index.html'">会议情况</li>
+              <li class="nav2-item" onclick="location.href = './pages/meeting/count.html'">会议统计</li>
+              <li class="nav2-item" onclick="location.href = './pages/meeting/leave.html'">会议请假</li>
+            </ul>
+          </li>
+          <li class="nav-item" onclick="location.href = './pages/edit/index.html'">设置
+          </li>
+        </ul>
+      </div>
+    </div>
+    <!-- right -->
+    <div class="right">
+      <div class="right-box">
+        <div class="right-box-h">
+          <span class="nav1-title">首页</span>
+        </div>
+        <!-- 接口开关 -->
+        <div class="interface">
+          <!-- 课程表上传接口 -->
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.htgl.mapper.DutyMapper">
+    <sql id="Base_Column_List">
+        duty.did, sid, sname, dname, tname, date_format(sign_time, '%Y-%m-%d %H:%i:%s') as sign_time, duty.state
+    </sql>
+    <!-- 查询所有值班情况 -->
+    <select id="queryDuty" parameterType="com.htgl.entity.QueryPageBean" resultType="java.util.LinkedHashMap">
+        select
+            <include refid="Base_Column_List" />
+        from duty, users, department d, title
+        where duty.uid = users.uid and users.did = d.did and users.tid = title.tid
+        <if test="queryString != null and queryString.length > 0">
+            and ${queryString}
+        </if>
+        order by sign_time desc limit ${currentPage * pageSize}, ${pageSize}
+    </select>
+    <!-- 查询所有值班情况总数 -->
+    <select id="queryDutyCount" parameterType="com.htgl.entity.QueryPageBean" resultType="java.lang.Integer">
+        select count(*)
+        from duty, users, department d, title
+        where duty.uid = users.uid and users.did = d.did and users.tid = title.tid
+        <if test="queryString != null and queryString.length > 0">
+            and ${queryString}
+        </if>
+    </select>
+    <!-- 查询所有值班补签 -->
+    <select id="queryDutyRepair" parameterType="com.htgl.entity.QueryPageBean" resultType="java.util.LinkedHashMap">
+        select
+        <include refid="Base_Column_List" />
+        from duty, users, department d, title
+        where duty.uid = users.uid and users.did = d.did and users.tid = title.tid and duty.state = 2
+        <if test="queryString != null and queryString.length > 0">
+            and ${queryString}
+        </if>
+        order by sign_time desc limit ${currentPage * pageSize}, ${pageSize}
+    </select>
+    <!-- 查询所有值班补签总数 -->
+    <select id="queryDutyRepairCount" parameterType="com.htgl.entity.QueryPageBean" resultType="java.lang.Integer">
+        select count(*)
+        from duty, users, department d, title
+        where duty.uid = users.uid and users.did = d.did and users.tid = title.tid and duty.state = 2
+        <if test="queryString != null and queryString.length > 0">
+            and ${queryString}
+        </if>
+    </select>
+    <!-- 查询值班统计 -->
+    <select id="queryDutyByCount" parameterType="com.htgl.entity.QueryPageBean" resultType="java.util.LinkedHashMap">
+        select duty.did, sid, sname, sum(duty.count) as count
+        from duty, users
+        where duty.uid = users.uid and duty.state = 1
+        <if test="queryString != null and queryString.length > 0">
+            and ${queryString}
+        </if>
+        group by duty.uid
+        order by sum(duty.count) desc limit ${currentPage * pageSize}, ${pageSize}
+    </select>
+    <!-- 查询值班统计数量 -->
+    <select id="queryDutyByCountNum" parameterType="com.htgl.entity.QueryPageBean" resultType="java.lang.Integer">
+        select count(DISTINCT duty.uid)
+        from duty, users
+        where duty.uid = users.uid and duty.state = 1
+        <if test="queryString != null and queryString.length > 0">
+            and ${queryString}
+        </if>
+    </select>
+    <!-- 导出 -->
+    <select id="export" parameterType="com.htgl.entity.QueryPageBean" resultType="java.util.LinkedHashMap">
+        select sid, sname, dname, tname, sum(duty.count) as count
+        from duty, users, department, title
+        where duty.uid = users.uid and users.did = department.did and users.tid = title.tid and duty.state = 1
+        <if test="queryString != null and queryString.length > 0">
+            and ${queryString}
+        </if>
+        group by duty.uid
+        order by sum(duty.count) desc
+    </select>
+</mapper>

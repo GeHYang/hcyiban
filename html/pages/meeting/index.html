@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>会议情况</title>
+  <link rel="stylesheet" href="../../css/public.css">
+  <link rel="stylesheet" href="./css/index.css">
+  <script src="../../js/jquery.js"></script>
+  <script src="../../js/public.js"></script>
+  <script src="./js/index.js"></script>
+</head>
+<body>
+  <!-- 头部 -->
+  <header>
+    <div class="h-left">
+      <a href="../../index.html">
+        <img src="../../imgs/yiban.png">
+        <span>后台管理系统</span>
+      </a>
+    </div>
+    <div class="h-right">
+      <img class="headIcon" src="" alt="">
+      <div class="h-right-info">
+        <a><span id="h-right-name"></span>
+          <ul class="h-right-ul">
+            <li onclick="exit()">退出登录</li>
+            <i></i>
+          </ul>
+        </a>
+      </div>
+    </div>
+  </header>
+  <div class="main">
+    <div class="popup" style="display: none;"></div>
+    <div class="addMeeting-box">
+      <section class="add-meeting">
+        <form id="add-meeting-form">
+          <table class="add-meeting-tb">
+            <tr>
+              <th colspan="5"><h2>会议发布</h2></th>
+            </tr>
+            <tr>
+              <td>发布者学号<i></i></td>
+              <td><input type="text" id="send-sid" value="" disabled required></td>
+              <td></td>
+              <td>发布者姓名<i></i></td>
+              <td><input type="text" id="send-sname" value="" disabled required></td>
+            </tr>
+            <tr>
+              <td>会议标题<i></i></td>
+              <td class="add-meeting-title"><input id="mtitle" type="text" placeholder="请输入标题" required></td>
+            </tr>
+            <tr class="m-content">
+              <td>会议内容<i></i></td>
+              <td colspan="4"><textarea id="meeting-content" required></textarea></td>
+            </tr>
+            <tr>
+              <td>开始时间<i></i></td>
+              <td><input type="datetime-local" id="start_time" required></td>
+              <td></td>
+              <td>结束时间<i></i></td>
+              <td><input type="datetime-local" id="end_time" required></td>
+            </tr>
+            <tr>
+              <td></td>
+              <td style="width: 180px;"></td>
+              <td style="width: 100px;"><button type="reset" onclick="closeMeeting('add-meeting')" >取消</button></td>
+              <td><button type="button" onclick="confirmAdd()">确定</button></td>
+              <td></td>
+            </tr>
+          </table>
+        </form>
+      </section>
+    </div>
+    <!-- left -->
+    <div class="left">
+      <div class="nav">
+        <ul class="nav-list">
+          <li class="nav-item">成员管理<i class="triangle-down"></i>
+            <ul class="nav2-list">
+              <li class="nav2-item" onclick="location.href = '../member/index.html'">成员情况</li>
+            </ul>
+          </li>
+          <li class="nav-item">值班管理<i class="triangle-down"></i>
+            <ul class="nav2-list">
+              <li class="nav2-item" onclick="location.href = '../duty/duty_table.html'">值班表</li>
+              <li class="nav2-item" onclick="location.href = '../duty/index.html'">值班情况</li>
+              <li class="nav2-item" onclick="location.href = '../duty/count.html'">值班统计</li>
+              <li class="nav2-item" onclick="location.href = '../duty/repair.html'">值班补签</li>
+              <li class="nav2-item" onclick="location.href = '../duty/leave.html'">值班请假</li>
+            </ul>
+          </li>
+          <li class="nav-item">会议管理<i class="triangle-down"></i>
+            <ul class="nav2-list">
+              <li class="nav2-item" onclick="location.href = '../meeting/index.html'" style="color: white;background-color: #c782c2;">会议情况</li>
+              <li class="nav2-item" onclick="location.href = '../meeting/count.html'">会议统计</li>
+              <li class="nav2-item" onclick="location.href = '../meeting/leave.html'">会议请假</li>
+            </ul>
+          </li>
+          <li class="nav-item" onclick="location.href = '../edit/index.html'">设置
+          </li>
+        </ul>
+      </div>
+    </div>
+    <!-- right -->
+    <div class="right">
+      <div class="right-box">
+        <div class="right-box-h">
+          <span class="nav1-title">
+            会议管理
+          </span>
+          <span class="nav2-title">
+            会议情况
+          </span>
+        </div>
+        <div class="right-box-main">
+          <div class="right-box-main-top">
+            <input type="text" id="queryString" placeholder="学号/姓名">
+            <input type="button" onclick="queryMeeting(document.querySelector('#queryString').value)" value="查询">
+            <input type="button" onclick="showAddMeeting('add-meeting')" value="添加">
+          </div>
+          <div class="right-box-tb">
+            <table id="r-b-tb" cellspacing="0" cellpadding="0">
+              
+            </table>
+          </div>
+          <div class="page-number">
+            <ul class="page-number-ul">
+              <li class="page-number-item" id="count">共<span>1</span> 条</li>
+              <div id="page">
+                <!-- <ul class="pager"></ul> -->
+              </div>
+              <li class="page-number-item" id="target">
+                前往<input type="text" value="1">页
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

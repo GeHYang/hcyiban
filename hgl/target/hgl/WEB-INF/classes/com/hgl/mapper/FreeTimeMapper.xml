@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hgl.mapper.FreeTimeMapper">
+    <sql id="timer">
+        `08:00-09:25`,`09:50-12:00`, `14:40-16:05`, `16:30-17:55`, `19:40-21:05`
+    </sql>
+    <insert id="addFreeTime" parameterType="com.hgl.pojo.FreeTime">
+        insert into mon values(#{sid}, ${mon});
+        insert into tue values(#{sid}, ${tue});
+        insert into wed values(#{sid}, ${wed});
+        insert into thurs values(#{sid}, ${thurs});
+        insert into fri  values(#{sid}, ${fri});
+        insert into sat values(#{sid}, ${sat});
+    </insert>
+    <delete id="delFreeTime" parameterType="java.lang.String">
+        delete from `mon` where sid = #{sid};
+        delete from `tue` where sid = #{sid};
+        delete from `wed` where sid = #{sid};
+        delete from `thurs` where sid = #{sid};
+        delete from `fri` where sid = #{sid};
+        delete from `sat` where sid = #{sid};
+    </delete>
+</mapper>

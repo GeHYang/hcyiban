@@ -1,0 +1,65 @@
+table{
+  position: relative;
+  /* position: absolute; */
+  user-select: none;
+  text-align: center;
+  border: 0;
+}
+caption{
+  box-sizing: border-box;
+  margin-right: 5px;
+  font-size: 30px;
+  background-color: #2a89e2;
+  color: white;
+}
+th{
+  display: inline-block;
+  box-sizing: border-box;
+  width: 300px;
+  margin-right: 5px;
+  font-size: 20px;
+  font-weight: none;
+  border: 1px solid rgb(33, 202, 27);
+  background-color: #FFD98C;
+}
+
+th:nth-child(1){
+  width: 55px;
+}
+.tb-content td{
+  z-index: 1;
+  position: relative;
+  display: inline-block;
+  box-sizing: border-box;
+  margin-top: 5px;
+  width: 30px;
+  height: 100px;
+  /* border: 1px solid rgb(106, 122, 105); */
+}
+.c0{
+  background-color: #FFD98C;
+}
+.c1{
+  background-color: #aaffff;
+}
+.bor{
+  border: 1px solid rgb(106, 122, 105)
+}
+.tb-content td:nth-child(1){
+  display: table-cell;
+  width: 55px;
+}
+
+.editBtn{
+  display: block;
+  margin: 0px auto;
+  margin-top: 15px;
+  padding: 0 15px;
+  font-size: 18px;
+  background-color: green;
+  color: white;
+  border: 1px solid #ccc;
+}
+.editBtn:active{
+  background-color: rgb(0, 100, 0);
+}

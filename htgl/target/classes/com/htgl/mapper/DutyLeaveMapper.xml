@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.htgl.mapper.DutyLeaveMapper">
+    <sql id="Base_Column_List">
+        dl_id, sid, sname, content, img, dutyleave.state, time, date_format(dl_time, '%Y-%m-%d %H:%i:%s') as dl_time, (select sname from users where uid = vid) as v_name
+    </sql>
+    <!-- 查询值班请假 -->
+    <select id="queryDutyLeave" parameterType="com.htgl.entity.QueryPageBean" resultType="java.util.LinkedHashMap">
+        select
+            <include refid="Base_Column_List"/>
+        from dutyLeave, users
+        where dutyLeave.uid = users.uid
+        <if test="queryString != null and queryString.length > 0">
+            and ${queryString}
+        </if>
+        order by dl_time desc, dutyleave.state desc limit ${currentPage * pageSize}, ${pageSize}
+    </select>
+    <!-- 查询值班请假总数 -->
+    <select id="queryDutyLeaveCount" parameterType="com.htgl.entity.QueryPageBean" resultType="java.lang.Integer">
+        select count(*)
+        from dutyLeave, users
+        where dutyLeave.uid = users.uid
+        <if test="queryString != null and queryString.length > 0">
+            and ${queryString}
+        </if>
+    </select>
+
+</mapper>

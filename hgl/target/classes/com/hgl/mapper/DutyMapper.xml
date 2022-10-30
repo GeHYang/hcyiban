@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hgl.mapper.DutyMapper">
+  <resultMap id="BaseResultMap" type="com.hgl.pojo.Duty">
+    <constructor>
+      <idArg column="did" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="sname" javaType="java.lang.String" jdbcType="VARCHAR"/>
+      <arg column="time" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="sign_time" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="state" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="count" javaType="java.lang.Integer" jdbcType="INTEGER" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List">
+    duty.did, sname, duty.time, duty.sign_time, duty.state, duty.count
+  </sql>
+  <!-- 通过用户id查询值班信息 -->
+  <select id="selectByUid" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select
+        <include refid="Base_Column_List" />
+    from duty, users
+    where duty.uid = users.uid and duty.uid = ${value} and duty.`state` = 1
+    order by sign_time desc
+  </select>
+  <!-- 通过用户id与月份查询值班情况 -->
+  <select id="selectByUidAndMonth" parameterType="java.util.Map" resultMap="BaseResultMap">
+    select
+        <include refid="Base_Column_List"/>
+    from duty, users
+    where duty.uid = users.uid and duty.uid = ${uid} and date_format(`sign_time`,'%Y-%m') = #{month}
+    order by sign_time desc
+  </select>
+  <!-- 通过用户id与年月日查询值班情况 -->
+  <select id="selectByUidAndDate" parameterType="java.util.Map" resultMap="BaseResultMap">
+    select
+        <include refid="Base_Column_List"/>
+    from duty, users
+    where duty.uid = users.uid and duty.uid = ${uid} and date_format(`sign_time`,'%Y-%m-%d') = #{month}
+    order by sign_time desc
+  </select>
+  <!-- 通过用户id查询用户最近一次签到时间 -->
+  <select id="findLastSignTimeByUid" parameterType="java.lang.Integer" resultType="java.util.Date">
+    select sign_time from duty where uid = #{uid} order by sign_time desc limit 0,1
+  </select>
+  <!-- 签到 -->
+  <insert id="dutySign" parameterType="com.hgl.pojo.Duty">
+    insert into duty(uid, time, sign_time, state, count)
+    values(${sname}, #{time}, #{signTime}, #{state}, #{count})
+  </insert>
+  <!-- 同意补签 -->
+  <update id="agreeSign" parameterType="java.lang.Integer">
+    update duty set state = 1 where did = ${value}
+  </update>
+  <!-- 请假 -->
+  <insert id="dutyLeave" parameterType="com.hgl.pojo.Dutyleave">
+    insert into dutyLeave(uid, content, img, time, dl_time)
+    values(#{uid}, #{content}, #{img}, #{time}, NOW())
+  </insert>
+
+</mapper>

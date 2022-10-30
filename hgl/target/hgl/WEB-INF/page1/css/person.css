@@ -1,0 +1,150 @@
+*{
+  margin: 0;
+  padding: 0;
+}
+li{
+  list-style: none;
+}
+.view{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  width: 100vw;
+  height: 100vh;
+  background-color: #dfdfdf;
+}
+.v-top{
+  position: relative;
+  width: 90vh;
+  height: 300px;
+  border-radius: 0% 0% 50% 50%;
+  background-color: #417EE2;
+}
+/* 头像 */
+#headIcon{
+  position: absolute;
+  left: 50%;
+  top: 30%;
+  transform: translate(-50%, -50%);
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+}
+.circle{
+  position: absolute;
+  left: 50%;
+  top: 30%;
+  transform: translate(-50%, -50%);
+  width: 120px;
+  height: 120px;
+  border: 1px solid white;
+  border-radius: 50%;
+  animation: circleFrame 2s infinite linear;
+}
+.circle:nth-child(2){
+  animation-delay: .5s;
+}
+/* .circle:nth-child(3){
+  animation-delay: 1s;
+} */
+@keyframes circleFrame{
+  0%{
+    width: 80px;
+    height: 80px;
+  }
+  50%{
+    width: 120px;
+    height: 120px;
+  }
+  100%{
+    width: 80px;
+    height: 80px;
+  }
+}
+#v-top-name{
+  position: absolute;
+  top: 60%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 150px;
+  text-align: center;
+  color: white;
+  font-size: 14px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.v-center{
+  box-sizing: border-box;
+  position: relative;
+  top: -50px;
+  width: 93%;
+  padding: 10px;
+  border-radius: 15px;
+  box-shadow: 0 0 10px rgba(163, 163, 163, 0.63);
+  background-color: white;
+}
+/* 个人信息 */
+.info_item{
+  display: block;
+  height: 30px;
+  padding: 10px 15px;
+}
+.i-item{
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding: 5px;
+  height: 30px;
+  border-bottom: 1px solid #ccc;
+}
+.title{
+  display: block;
+  overflow: hidden;
+  width: 70px;
+  height: 30px;
+  line-height: 30px;
+  text-align: justify;
+  color: rgb(145, 145, 145);
+}
+.title i{
+  display: inline-block;
+  width: 100%;
+}
+.selBox{
+  position: relative;
+}
+.i-item-text{
+  display: block;
+  width: 180px;
+  height: 30px;
+  line-height: 30px;
+  text-align: center;
+  color: rgb(105, 105, 105);
+}
+.i-item-right{
+  display: block;
+  position: absolute;
+  right: 0px;
+  width: 30px;
+  padding: 2px 5px;
+  font-size: 14px;
+  font-style: initial;
+  background-color: #417EE2;
+  color: white;
+}
+/*选择*/
+.selectBox{
+  position: absolute;
+  top: 0;
+  display: block;
+  width: 180px;
+  height: 30px;
+  line-height: 30px;
+  text-align: center;
+  color: rgb(105, 105, 105);
+}

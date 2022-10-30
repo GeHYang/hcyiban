@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.htgl.mapper.MeetingMapper">
+    <sql id="Base_Column_List">
+        meeting.mid, sid, sname, mtitle, mcontent, date_format(start_time, '%Y-%m-%d %H:%i:%s') as start_time,
+            date_format(end_time, '%Y-%m-%d %H:%i:%s') as end_time, mcode
+    </sql>
+    <!-- 查询会议 -->
+    <select id="queryMeeting" parameterType="com.htgl.entity.QueryPageBean" resultType="java.util.LinkedHashMap">
+        select
+            <include refid="Base_Column_List"/>
+        from meeting, users
+        where meeting.uid = users.uid
+        <if test="queryString != null and queryString.length > 0">
+            and ${queryString}
+        </if>
+        order by mid desc limit ${currentPage * pageSize}, ${pageSize}
+    </select>
+    <!-- 查询会议总数 -->
+    <select id="queryMeetingCount" parameterType="com.htgl.entity.QueryPageBean" resultType="java.lang.Integer">
+        select count(*)
+        from meeting, users
+        where meeting.uid = users.uid
+        <if test="queryString != null and queryString.length > 0">
+            and ${queryString}
+        </if>
+    </select>
+    <!-- 添加会议 -->
+    <insert id="addMeeting" parameterType="com.htgl.pojo.Meeting">
+        insert into meeting(uid, mtitle, mcontent, start_time, end_time, mcode)
+        values(${uid}, #{mtitle}, #{mcontent}, #{start_time}, #{end_time}, #{mcode})
+    </insert>
+    <!-- 查询会议签到 -->
+    <select id="queryMeetingSign" parameterType="com.htgl.entity.QueryPageBean" resultType="java.util.LinkedHashMap">
+        select ms_id, ms_mid, sid, sname, date_format(ms_time, '%Y-%m-%d %H:%i:%s') as ms_time
+        from meetingSign, users
+        where users.uid = meetingSign.ms_uid
+        <if test="queryString != null and queryString.length > 0">
+            and ${queryString}
+        </if>
+        order by ms_id desc limit ${currentPage * pageSize}, ${pageSize}
+    </select>
+    <!-- 查询会议签到总数 -->
+    <select id="queryMeetingSignCount" parameterType="com.htgl.entity.QueryPageBean" resultType="java.lang.Integer">
+        select count(ms_id)
+        from meetingSign, users
+        where users.uid = meetingSign.ms_uid
+        <if test="queryString != null and queryString.length > 0">
+            and ${queryString}
+        </if>
+    </select>
+    <!-- 查询所有会议id -->
+    <select id="getAllMid" resultType="java.lang.Integer">
+        select mid from meeting order by mid desc
+    </select>
+    <!-- 查询会议请假 -->
+    <select id="queryMeetingLeave" parameterType="com.htgl.entity.QueryPageBean" resultType="java.util.LinkedHashMap">
+        select ml_id, m_id, ml_content, ml_img, (select sname from users where uid = meetingLeave.uid) as sname,
+               date_format(ml_time, '%Y-%m-%d %H:%i:%s') as ml_time, (select sname from users where uid = v_uid) as v_name, meetingLeave.state
+        from meetingLeave, users
+        where meetingLeave.uid = users.uid
+        <if test="queryString != null and queryString.length > 0">
+            and ${queryString}
+        </if>
+        order by ml_id desc limit ${currentPage * pageSize}, ${pageSize}
+    </select>
+    <!-- 查询会议请假总数 -->
+    <select id="queryMeetingLeaveCount" parameterType="com.htgl.entity.QueryPageBean" resultType="java.lang.Integer">
+        select count(*)
+        from meetingLeave, users
+        where meetingLeave.uid = users.uid
+        <if test="queryString != null and queryString.length > 0">
+            and ${queryString}
+        </if>
+    </select>
+
+    <!-- 导出会议签到 -->
+    <select id="export" parameterType="com.htgl.entity.QueryPageBean" resultType="java.util.LinkedHashMap">
+        select ms_id, ms_mid, users.sid, sname, date_format(ms_time, '%Y-%m-%d %H:%i:%s') as ms_time
+        from meetingSign, users
+        where users.uid = meetingSign.ms_uid
+        <if test="queryString != null and queryString.length > 0">
+            and ${queryString}
+        </if>
+        order by ms_id desc
+    </select>
+</mapper>

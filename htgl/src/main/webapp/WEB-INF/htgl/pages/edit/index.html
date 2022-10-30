@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>设置</title>
+  <link rel="stylesheet" href="../../css/public.css">
+  <link rel="stylesheet" href="./index.css">
+  <script src="../../js/md5.js"></script>
+  <script src="../../js/jquery.js"></script>
+  <script src="../../js/public.js"></script>
+  <script src="./index.js"></script>
+</head>
+
+<body>
+  <!-- 头部 -->
+  <header>
+    <div class="h-left">
+      <a href="../../index.html">
+        <img src="../../imgs/yiban.png">
+        <span>后台管理系统</span>
+      </a>
+    </div>
+    <div class="h-right">
+      <img class="headIcon" src="" alt="">
+      <div class="h-right-info">
+        <a><span id="h-right-name"></span>
+          <ul class="h-right-ul">
+            <li onclick="exit()">退出登录</li>
+            <i></i>
+          </ul>
+        </a>
+      </div>
+    </div>
+  </header>
+  <div class="main">
+    <!-- left -->
+    <div class="left">
+      <div class="nav">
+        <ul class="nav-list">
+          <li class="nav-item">成员管理<i class="triangle-down"></i>
+            <ul class="nav2-list">
+              <li class="nav2-item" onclick="location.href = '../member/index.html'">成员情况</li>
+            </ul>
+          </li>
+          <li class="nav-item">值班管理<i class="triangle-down"></i>
+            <ul class="nav2-list">
+              <li class="nav2-item" onclick="location.href = '../duty/duty_table.html'">值班表</li>
+              <li class="nav2-item" onclick="location.href = '../duty/index.html'">值班情况</li>
+              <li class="nav2-item" onclick="location.href = '../duty/count.html'">值班统计</li>
+              <li class="nav2-item" onclick="location.href = '../duty/repair.html'">值班补签</li>
+              <li class="nav2-item" onclick="location.href = '../duty/leave.html'">值班请假</li>
+            </ul>
+          </li>
+          <li class="nav-item">会议管理<i class="triangle-down"></i>
+            <ul class="nav2-list">
+              <li class="nav2-item" onclick="location.href = '../meeting/index.html'">会议情况</li>
+              <li class="nav2-item" onclick="location.href = '../meeting/count.html'">会议统计</li>
+              <li class="nav2-item" onclick="location.href = '../meeting/leave.html'">会议请假</li>
+            </ul>
+          </li>
+          <li class="nav-item" onclick="location.href = '../edit/index.html'"
+            style="color: white;background-color: #c782c2;">设置
+          </li>
+        </ul>
+      </div>
+    </div>
+    <!-- right -->
+    <div class="right">
+      <div class="right-box">
+        <div class="right-box-h">
+          <span class="nav1-title">设置</span>
+        </div>
+        <div class="right-box-main">
+          <!-- 个人信息 -->
+          <div class="info-box">
+            <div class="info">
+              <section class="info-head">
+                <img class="headIcon" src="" alt="">
+                <span></span>
+                <button onclick="showAuth('editPassword')">修改密码</button>
+                <button onclick="showAuth('editHeadIcon')">修改头像</button>
+                <!-- 修改密码 -->
+                <section id="editPassword" class="auth-box" style="display: none;">
+                  <form onsubmit="return false;">
+                    <h3 align="center">修改密码</h3>
+                    <section>
+                      <input type="text" name="aid" id="aid" value="1001" onfocus="this.blur()" required>
+                      <label for="aid">ID</label>
+                    </section>
+                    <section>
+                      <input type="password" name="pwd1" id="pwd1" required>
+                      <label for="pwd1">输入新密码</label>
+                    </section>
+                    <section>
+                      <input type="password" name="pwd2" id="pwd2" required>
+                      <label for="pwd2">确认新密码</label>
+                    </section>
+                    <section>
+                      <button type="button" onclick="closeAuth('editPassword')">取消</button>
+                      <button onclick="confirmAuth()">确定</button>
+                    </section>
+                  </form>
+                </section>
+                <!-- 修改头像 -->
+                <section id="editHeadIcon" class="auth-box" style="display: none;">
+                  <form onsubmit="return false;" id="resetHeadIcon" enctype="multipart/form-data">
+                    <h3 align="center">修改头像</h3>
+                    <section class="changeFile">
+                      <input type="file" name="file" id="file" onchange="showFileName(this)">
+                      <input type="button" value="选择图片" onclick="_('#file').click()">
+                    </section>
+                    <section>
+                      <input type="text" disabled id="fileName">
+                    </section>
+                    <section>
+                      <button type="reset" onclick="closeAuth('editHeadIcon')">取消</button>
+                      <button type="button" onclick="confirmHead()">确定</button>
+                    </section>
+                  </form>
+                </section>
+              </section>
+              <!-- 基本信息 -->
+              <section class="orther">
+                <form onsubmit="return false;" id="form">
+                  <table class="orther-tb">
+                    <tr>
+                      <td>登录ID<i></i></td>
+                      <td><input type="text" name="aid" value="1001" disabled required></td>
+                      <td></td>
+                      <td>姓名<i></i></td>
+                      <td><input type="text" name="sname" placeholder="请输入姓名" disabled required></td>
+                    </tr>
+                    <tr>
+                      <td>部门<i></i></td>
+                      <td><select id="dname" name="did" disabled required>
+                          <option value="">未选择</option>
+                          <option value="1001">主席团</option>
+                          <option value="1002">行政办公室</option>
+                          <option value="1003">新闻采编部</option>
+                          <option value="1004">视觉传达部</option>
+                          <option value="1005">运营推广部</option>
+                          <option value="1006">优课开发部</option>
+                          <option value="1007">技术研发部</option>
+                          <option value="1008">新媒体部</option>
+                          <option value="1009">思政编辑部</option>
+                          <select></td>
+                      <td></td>
+                      <td>职称<i></i></td>
+                      <td><select id="tname" name="tid" disabled required>
+                          <option value="">未选择</option>
+                          <option value="1001">主席</option>
+                          <option value="1002">副主席</option>
+                          <option value="1003">秘书长</option>
+                          <option value="1004">副秘书长</option>
+                          <option value="1005">部长</option>
+                          <option value="1006">副部长</option>
+                          <option value="1007">干事</option>
+                          <select>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Q Q<i></i></td>
+                      <td><input type="text" name="qq" placeholder="QQ号" disabled required></td>
+                      <td></td>
+                      <td>手机<i></i></td>
+                      <td><input type="text" name="phone" placeholder="手机号" disabled required></td>
+                    </tr>
+                    <tr>
+                      <td>院系<i></i></td>
+                      <td>
+                        <select id="cname" name="cname" disabled required>
+                          <option value="">请选择</option>
+                          <option value="文学与传媒学院">文学与传媒学院</option>
+                          <option value="公共管理学院">公共管理学院</option>
+                          <option value="马克思主义学院">马克思主义学院</option>
+                          <option value="数理学院">数理学院</option>
+                          <option value="人工智能与制造学院">人工智能与制造学院</option>
+                          <option value="化学与生物工程学院">化学与生物工程学院</option>
+                          <option value="体育学院">体育学院</option>
+                          <option value="音乐舞蹈学院">音乐舞蹈学院</option>
+                          <option value="美术与设计学院">美术与设计学院</option>
+                          <option value="商学院">商学院</option>
+                          <option value="大数据与计算机学院">大数据与计算机学院</option>
+                          <option value="外国语学院">外国语学院</option>
+                          <option value="教师教育学院">教师教育学院</option>
+                          <select>
+                      </td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                    </tr>
+                  </table>
+                  <button class="resetInfo" type="button" onclick="resetInfo()">修改基本信息</button>
+                  <button class="confirmBtn" style="display: none;">确认修改</button>
+                  <button class="cancelBtn" type="button" onclick="cancelEdit()" style="display: none;">取消修改</button>
+                </form>
+              </section>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

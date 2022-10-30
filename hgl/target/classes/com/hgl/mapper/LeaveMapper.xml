@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hgl.mapper.LeaveMapper">
+  <!-- 值班请假 -->
+  <select id="getDutyLeaveByUid" parameterType="java.lang.Integer" resultType="java.util.LinkedHashMap">
+    select dl_id as lid, sname, content, img, time, date_format(dl_time, '%Y-%m-%d %H:%i:%s') as ltime, dutyLeave.state,
+      (select sname from users where uid = vid) as vname
+    from dutyLeave, users
+    where dutyLeave.uid = users.uid and dutyLeave.uid = ${value}
+    order by dl_time desc limit 0, 10
+  </select>
+  <!-- 值班请假 -->
+  <select id="getMeetingLeaveByUid" parameterType="java.lang.Integer" resultType="java.util.LinkedHashMap">
+    select ml_id as lid, sname, ml_content as content, ml_img as img, m_id as mid, date_format(ml_time, '%Y-%m-%d %H:%i:%s') as ltime,
+           meetingLeave.state, (select sname from users where uid = v_uid) as vname
+    from meetingLeave, users
+    where meetingLeave.uid = users.uid and meetingLeave.uid = ${value}
+    order by ml_time desc limit 0, 10
+  </select>
+
+</mapper>

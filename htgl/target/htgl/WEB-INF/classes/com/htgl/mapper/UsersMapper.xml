@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.htgl.mapper.UsersMapper">
+    <sql id="Base_Column_List">
+        uid, sid, yb_uid, sname, dname, tname, cname, qq, phone
+    </sql>
+    <!-- 查询成员 -->
+    <select id="queryUsers" parameterType="com.htgl.entity.QueryPageBean" resultType="java.util.LinkedHashMap">
+        select
+            <include refid="Base_Column_List" />
+        from users, department, title
+        where users.did = department.did and users.tid = title.tid
+        <if test="queryString != null and queryString.length > 0">
+            and ${queryString}
+        </if>
+        order by users.did asc limit ${currentPage * pageSize}, ${pageSize}
+    </select>
+    <!-- 条件查询总数 -->
+    <select id="queryUsersCount" parameterType="com.htgl.entity.QueryPageBean" resultType="java.lang.Integer">
+        select count(*)
+        from users, department, title
+        where users.did = department.did and users.tid = title.tid
+        <if test="queryString != null and queryString.length > 0">
+            and ${queryString}
+        </if>
+    </select>
+    <!-- 添加成员 -->
+    <insert id="addUser" parameterType="com.htgl.pojo.Users">
+        insert into users(sid, sname, did, tid, cname, qq, phone)
+        values(#{sid}, #{sname}, #{did}, #{tid}, #{cname}, #{qq}, #{phone})
+    </insert>
+    <!-- 添加成员 -->
+    <insert id="addUser1" parameterType="com.htgl.pojo.Menber">
+        insert into users(sid, sname, did, tid, cname, qq, phone)
+        values(#{sid}, #{sname}, (select did from department where dname = #{dname}), (select tid from title where tname = #{tname}), #{cname}, #{qq}, #{phone})
+    </insert>
+    <select id="queryUserBySid" parameterType="java.lang.String" resultType="java.util.LinkedHashMap">
+        select uid, sid, yb_uid, sname, dname, tname, cname, qq, phone
+        from users, department, title
+        where users.did = department.did and users.tid = title.tid and sid = #{value}
+    </select>
+
+</mapper>

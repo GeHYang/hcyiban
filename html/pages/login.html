@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>用户登录</title>
+  <script src="../js/md5.js"></script>
+  <script src="../js/jquery.js"></script>
+</head>
+<body>
+<div class="box">
+  <form onsubmit="return false;">
+    <h2 class="title" align="center">用户登录</h2>
+    <section>
+      <input type="text" name="sid" id="sid" placeholder="请输入学号">
+    </section>
+    <section>
+      <input type="password" name="password" id="password" placeholder="请输入密码">
+    </section>
+    <section>
+      <span class="tips"></span>
+      <button onclick="login()">登录</button>
+    </section>
+  </form>
+</div>
+<style>
+  *{
+    margin: 0;
+    padding: 0;
+  }
+  .box{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: black;
+  }
+  .box form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    width: 300px;
+    padding: 20px;
+    background-color: rgba(204, 204, 204, 0.301);
+    box-shadow: 0 3px 10px rgb(187, 180, 180);
+    font-size: 20px;
+  }
+  .box form input{
+    height: 30px;
+    padding: 0 4px;
+    outline-color: aqua;
+    color: white;
+    background-color: rgba(204, 204, 204, 0.301);
+    font-size: 18px;
+  }
+  .box form input::placeholder{
+    color: rgba(255, 255, 255, 0.411);
+  }
+  .box form button{
+    width: 80px;
+    padding: 5px;
+    margin: 40px 0 10px 0;
+    background-color: rgb(161, 161, 148);
+  }
+  .box form button:hover{
+    color: white;
+    border-color: white;
+    background-color: blue;
+    box-shadow: 0 0 10px blue, 0 0 15px blue, 0 0 25px blue;
+  }
+  .box form section{
+    position: relative;
+    padding: 0;
+    margin: 2px 0;
+  }
+  .tips{
+    display: block;
+    position: absolute;
+    left: -70px;
+    top: 10px;
+    width: 220px;
+    text-align: center;
+    font-size: 16px;
+    color: red;
+    text-shadow: 0 0 10px red;
+  }
+  .title{
+    margin: 10px 0;
+    color: rgba(255, 255, 255, 0.667);
+    text-shadow: 0 0 10px rgba(59, 56, 255, 0.667),
+    0 0 20px rgba(56, 255, 66, 0.667),0 0 30px rgba(56, 192, 255, 0.667);
+  }
+</style>
+<script>
+  function login(){
+    const preUrl = "http://hgl.nat300.top/ht";
+    let sid = document.querySelector("#sid").value;
+    let password = document.querySelector("#password").value;
+    $.ajax({
+      url: preUrl + '/user',
+      data: {
+        sid: sid,
+        password: MD5(password)
+      },
+      method: 'post',
+      success(res){
+        if(res.code === 200){
+          window.localStorage.setItem('token', res.data[0].password);
+          res.data[1].headIcon = res.data[0].headIcon;
+          res.data[1].aid = res.data[0].aid;
+          window.localStorage.setItem('info', JSON.stringify(res.data[1]));
+          document.querySelector(".tips").innerText = "登录成功";
+          // console.log(res);
+          setTimeout(function(){window.location.href = '../index.html'},500)
+        } else {
+          document.querySelector(".tips").innerText = res.msg;
+        }
+      }
+    })
+  }
+</script>
+</body>
+</html>

@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>设置</title>
+  <link rel="stylesheet" href="../../css/public.css">
+  <link rel="stylesheet" href="./css/duty_table.css">
+  <script src="../../js/jquery.js"></script>
+  <script src="../../js/public.js"></script>
+  <script src="./js/duty_table.js"></script>
+</head>
+
+<body>
+  <!-- 头部 -->
+  <header>
+    <div class="h-left">
+      <a href="../../index.html">
+        <img src="../../imgs/yiban.png">
+        <span>后台管理系统</span>
+      </a>
+    </div>
+    <div class="h-right">
+      <img class="headIcon" src="" alt="">
+      <div class="h-right-info">
+        <a><span id="h-right-name"></span>
+          <ul class="h-right-ul">
+            <li onclick="exit()">退出登录</li>
+            <i></i>
+          </ul>
+        </a>
+      </div>
+    </div>
+  </header>
+  <div class="main">
+    <!-- left -->
+    <div class="left">
+      <div class="nav">
+        <ul class="nav-list">
+          <li class="nav-item">成员管理<i class="triangle-down"></i>
+            <ul class="nav2-list">
+              <li class="nav2-item" onclick="location.href = '../member/index.html'">成员情况</li>
+            </ul>
+          </li>
+          <li class="nav-item">值班管理<i class="triangle-down"></i>
+            <ul class="nav2-list">
+              <li class="nav2-item" onclick="location.href = '../duty/duty_table.html'"
+              style="color: white;background-color: #c782c2;">值班表</li>
+              <li class="nav2-item" onclick="location.href = '../duty/index.html'">值班情况</li>
+              <li class="nav2-item" onclick="location.href = '../duty/count.html'">值班统计</li>
+              <li class="nav2-item" onclick="location.href = '../duty/repair.html'">值班补签</li>
+              <li class="nav2-item" onclick="location.href = '../duty/leave.html'">值班请假</li>
+            </ul>
+          </li>
+          <li class="nav-item">会议管理<i class="triangle-down"></i>
+            <ul class="nav2-list">
+              <li class="nav2-item" onclick="location.href = '../meeting/index.html'">会议情况</li>
+              <li class="nav2-item" onclick="location.href = '../meeting/count.html'">会议统计</li>
+              <li class="nav2-item" onclick="location.href = '../meeting/leave.html'">会议请假</li>
+            </ul>
+          </li>
+          <li class="nav-item" onclick="location.href = '../edit/index.html'">设置
+          </li>
+        </ul>
+      </div>
+    </div>
+    <!-- right -->
+    <div class="right">
+      <div class="right-box">
+        <div class="right-box-h">
+          <span class="nav1-title">
+            值班管理
+          </span>
+          <span class="nav2-title">
+            值班表
+          </span>
+        </div>
+      </div>
+      
+      <div class="right-box-main">
+        <!-- 值班表 -->
+        <div class="duty_table" style="display: none;">
+          <table cellpadding="0" cellspacing="0">
+            <caption>河池学院易班发展中心值班表</caption>
+            <tr>
+              <th>时间</th>
+              <th>08:00-09:25</th>
+              <th>09:50-12:00</th>
+              <th>14:40-16:05</th>
+              <th>16:30-17:55</th>
+              <th>19:40-21:05</th>
+            </tr>
+          </table>
+          <table class="tb-content" cellpadding="0" cellspacing="0">
+            <tr>
+              <td>星期一</td>
+      
+              <td>陈玉冰</td>
+              <td>陈俊年</td>
+              <td>韦小漫</td>
+              <td>陈健豪</td>
+              <td>尹宇涛</td>
+              <td>谭启涛</td>
+              <td>黄丽嘉</td>
+              <td>韦美婷</td>
+              <td></td>
+              <td></td>
+      
+              <td>廖序璇</td>
+              <td>韦林力</td>
+              <td>莫小颖</td>
+              <td>陈彩勤</td>
+              <td>刘潇瑶</td>
+              <td>罗明亮</td>
+              <td>韦莉迎</td>
+              <td></td>
+              <td></td>
+              <td></td>
+      
+              <td>潘敏琪</td>
+              <td>谢华明</td>
+              <td>罗勋丹</td>
+              <td>潘芃屹</td>
+              <td>曾嘉琪</td>
+              <td>曾丽红</td>
+              <td>黄青青</td>
+              <td>廖才琛</td>
+              <td></td>
+              <td></td>
+      
+              <td>班春苗</td>
+              <td>刘珊珊</td>
+              <td>陈雨</td>
+              <td>陈子学</td>
+              <td>石微微</td>
+              <td>李雨欣</td>
+              <td>覃灿兰</td>
+              <td></td>
+              <td></td>
+              <td></td>
+      
+              <td>蒙媛萍</td>
+              <td>沈丽华</td>
+              <td>韦春凤</td>
+              <td>吴春榕</td>
+              <td>何礼斌</td>
+              <td>韦光燕</td>
+              <td>晏雯</td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>星期二</td>
+              
+              <td>邓燊红</td>
+              <td>农金婷</td>
+              <td>雷木兰</td>
+              <td>陈健豪</td>
+              <td>甘可鑫</td>
+              <td>廖丽婷</td>
+              <td>陆先福</td>
+              <td>卜媛媛</td>
+              <td></td>
+              <td></td>
+      
+              <td>李旭</td>
+              <td>许秀怡</td>
+              <td>蓝黄桦</td>
+              <td>周菲</td>
+              <td>朱冬林</td>
+              <td>陈飞宇</td>
+              <td>仪家宁</td>
+              <td>谭维圆</td>
+              <td></td>
+              <td></td>
+      
+              <td>黄思棋</td>
+              <td>黄琼纬</td>
+              <td>赵柳旭</td>
+              <td>梁艳萍</td>
+              <td>孟庆平</td>
+              <td>陈智玲</td>
+              <td>黄丽嘉</td>
+              <td>盘家利</td>
+              <td></td>
+              <td></td>
+      
+              <td>潘敏琪</td>
+              <td>赖春梅</td>
+              <td>蓝日波</td>
+              <td>潘芃屹</td>
+              <td>冯石鹏</td>
+              <td>李雕</td>
+              <td>苏韦艳</td>
+              <td>陈国运</td>
+              <td></td>
+              <td></td>
+      
+              <td>覃嘉杰</td>
+              <td>柳若</td>
+              <td>李世旺</td>
+              <td>覃金华</td>
+              <td>杜柏葳</td>
+              <td>黎心媚</td>
+              <td>周媛</td>
+              <td>黄菲豪</td>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>星期三</td>
+              
+              <td>蓝吉城</td>
+              <td>韦春凤</td>
+              <td>卢欢</td>
+              <td>梁茵茵</td>
+              <td>廖菲菲</td>
+              <td>王前钉</td>
+              <td>农小艳</td>
+              <td></td>
+              <td></td>
+              <td></td>
+      
+              <td>李冠男</td>
+              <td>林泽锋</td>
+              <td>谢晓燕</td>
+              <td>覃岚</td>
+              <td>黄秋惠</td>
+              <td>黄小珊</td>
+              <td>仪家宁</td>
+              <td>李委玲</td>
+              <td></td>
+              <td></td>
+      
+              <td>韦丽清</td>
+              <td>陈业春</td>
+              <td>罗娇媚</td>
+              <td>韦庆芬</td>
+              <td>刘小玉</td>
+              <td>陈飞宇</td>
+              <td>丘放</td>
+              <td></td>
+              <td></td>
+              <td></td>
+      
+              <td>班春苗</td>
+              <td>吴家荣</td>
+              <td>韦小漫</td>
+              <td>党水源</td>
+              <td>何礼斌</td>
+              <td>石微微</td>
+              <td>覃文星</td>
+              <td></td>
+              <td></td>
+              <td></td>
+      
+              <td>蒙媛萍</td>
+              <td>赵敏婷</td>
+              <td>蓝黄桦</td>
+              <td>吴春榕</td>
+              <td>尹宇涛</td>
+              <td>谭启涛</td>
+              <td>谢华明</td>
+              <td>覃灿兰</td>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>星期四</td>
+              
+              <td>黄思棋</td>
+              <td>沈丽华</td>
+              <td>雷木兰</td>
+              <td>卢欢</td>
+              <td>刘小玉</td>
+              <td>廖丽婷</td>
+              <td>利娟香</td>
+              <td>卜媛媛</td>
+              <td></td>
+              <td></td>
+      
+              <td>李旭</td>
+              <td>丁秋如</td>
+              <td>覃金华</td>
+              <td>陈雨</td>
+              <td>刘雪芬</td>
+              <td>龚应丹</td>
+              <td>黄青青</td>
+              <td>廖才琛</td>
+              <td></td>
+              <td></td>
+      
+              <td>覃嘉杰</td>
+              <td>赖春梅</td>
+              <td>肖宝云</td>
+              <td>覃婵婷</td>
+              <td>孟庆平</td>
+              <td>曾丽红</td>
+              <td>唐海怡</td>
+              <td>陈国运</td>
+              <td></td>
+              <td></td>
+      
+              <td>廖序璇</td>
+              <td>杨健</td>
+              <td>罗春平</td>
+              <td>姚敏榕</td>
+              <td>冯石鹏</td>
+              <td>莫芮</td>
+              <td>王前钉</td>
+              <td></td>
+              <td></td>
+              <td></td>
+      
+              <td>邓贤华</td>
+              <td>农金婷</td>
+              <td>罗勋丹</td>
+              <td>蒋姝妍 </td>
+              <td>杜柏葳</td>
+              <td>黎心媚</td>
+              <td>周媛</td>
+              <td>李叶茵</td>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>星期五</td>
+              
+              <td>邓燊红</td>
+              <td>杨健</td>
+              <td>梁艳萍</td>
+              <td>覃婵婷</td>
+              <td>梁茵茵</td>
+              <td>莫芮</td>
+              <td>农小艳</td>
+              <td>韦美婷</td>
+              <td></td>
+              <td></td>
+      
+              <td>李冠男</td>
+              <td>韦林力</td>
+              <td>莫小颖</td>
+              <td>苏秀萍</td>
+              <td>黄欣</td>
+              <td>廖菲菲</td>
+              <td>陆先福</td>
+              <td>黎晓琳</td>
+              <td></td>
+              <td></td>
+      
+              <td>陈玉冰</td>
+              <td>陈俊年</td>
+              <td>赵柳旭</td>
+              <td>蒋姝妍 </td>
+              <td>甘可鑫</td>
+              <td>李雕</td>
+              <td>李雨欣</td>
+              <td>黄菲豪</td>
+              <td></td>
+              <td></td>
+      
+              <td>邓贤华</td>
+              <td>林泽锋</td>
+              <td>刘珊珊</td>
+              <td>姚敏榕</td>
+              <td>陈子学</td>
+              <td>黄小珊</td>
+              <td>晏雯</td>
+              <td>李叶茵</td>
+              <td></td>
+              <td></td>
+      
+              <td>韦丽清</td>
+              <td>吴家荣</td>
+              <td>罗娇媚</td>
+              <td>农婕柔</td>
+              <td>黄秋惠</td>
+              <td>韦光燕</td>
+              <td>覃文星</td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>星期六</td>
+              
+              <td>黄琼纬</td>
+              <td>蓝日波</td>
+              <td>陈彩勤</td>
+              <td>韦庆芬</td>
+              <td>刘雪芬</td>
+              <td>龚应丹</td>
+              <td>李委玲</td>
+              <td></td>
+              <td></td>
+              <td></td>
+      
+              <td>柳若</td>
+              <td>谢晓燕</td>
+              <td>覃岚</td>
+              <td>农婕柔</td>
+              <td>黄欣</td>
+              <td>苏韦艳</td>
+              <td>丘放</td>
+              <td></td>
+              <td></td>
+              <td></td>
+      
+              <td>蓝吉城</td>
+              <td>陈业春</td>
+              <td>苏秀萍</td>
+              <td>党水源</td>
+              <td>陈智玲</td>
+              <td>韦莉迎</td>
+              <td>黎晓琳</td>
+              <td></td>
+              <td></td>
+              <td></td>
+      
+              <td>赵敏婷</td>
+              <td>丁秋如</td>
+              <td>罗春平</td>
+              <td>周菲</td>
+              <td>朱冬林</td>
+              <td>刘潇瑶</td>
+              <td>利娟香</td>
+              <td>盘家利</td>
+              <td></td>
+              <td></td>
+      
+              <td>许秀怡</td>
+              <td>李世旺</td>
+              <td>肖宝云</td>
+              <td>曾嘉琪</td>
+              <td>罗明亮</td>
+              <td>唐海怡</td>
+              <td>谭维圆</td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+          </table>
+        </div>
+        <button class="editBtn" style="display: none;" onclick="editTable()">修改</button>
+        <!-- 生成值班表 -->
+        <button class="editBtn" onclick="createTable()">值班表生成</button>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

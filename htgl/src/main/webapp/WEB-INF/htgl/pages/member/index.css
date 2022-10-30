@@ -1,0 +1,183 @@
+/* 弹窗 */
+.popup{
+  z-index: 10000;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 0vh;
+  background-color: transparent;
+  transition: height .5s;
+}
+/* 添加成员 */
+.add-member{
+  overflow: hidden;
+  position: absolute;
+  top: 50%;
+  left: 30%;
+  max-height: 0;
+  transform: translateY(-50%);
+  background-color: white;
+  border-radius: 10px;
+  transition: all .5s;
+  box-shadow: 0 0 30px 1px rgb(155, 155, 155);
+}
+.add-tb{
+  padding: 20px 15px;
+}
+.add-tb td{
+  box-sizing: border-box;
+  overflow: hidden;
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 35px;
+  padding: 0 4px;
+  margin: 15px 0;
+  line-height: 35px;
+  font-size: 20px;
+  color: #515a53;
+}
+.add-tb td:nth-child(2), .add-tb td:nth-child(5){
+  width: 230px;
+  padding: 0;
+}
+.add-tb td:nth-child(1), .add-tb td:nth-child(4){
+  text-align: justify;
+}
+.add-tb td i{
+  display: inline-block;
+  width: 100%;
+}
+.add-tb td input, .add-tb td select{
+  box-sizing: border-box;
+  width: 230px;
+  height: 32px;
+  padding: 0 4px;
+  font-size: 20px;
+  text-align: center;
+  outline: none;
+  border: 1px solid #ccc;
+}
+.add-tb td input:valid, .add-tb td select:valid{
+  outline-style: auto;
+  outline-color: green;
+}
+.add-tb td button{
+  padding: 0 5px;
+  font-size: 18px;
+  border: 1px solid;
+}
+.cancelBtn{
+  background-color: #ececec;
+}
+.confirmBtn{
+  background-color: green;
+  color: white;
+}
+.add-tb td button:hover{
+  background-color: rgb(57, 153, 236);
+  color: black;
+}
+
+/* 导入 */
+.import-excel-box{
+  visibility: hidden;
+  overflow: hidden;
+  user-select: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 500px;
+  max-height: 0;
+  border-radius: 10px;
+  box-shadow: 0 0 30px 1px rgb(155, 155, 155);
+  background-color: white;
+  transition: all .5s;
+}
+.import-excel-box section:nth-child(1){
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 10px;
+  padding: 10px 50px;
+  cursor: pointer;
+}
+.import-excel-box h2{
+  padding: 20px 0px;
+}
+.icon-box{
+  display: flex;
+}
+.icon-box:hover{
+  user-select: none;
+  background-color: #ececec;
+}
+.import-excel-box section:nth-child(1) a{
+  display: block;
+  height: 50px;
+  line-height: 50px;
+  font-size: 18px;
+  color: blue;
+  text-decoration: underline;
+}
+.excel-icon{
+  display: block;
+  margin-right: 5px;
+  height: 50px;
+  line-height: 50px;
+  color: green;
+  font-size: 40px;
+}
+#import-member-excel{
+  position: relative;
+  padding: 15px 50px;
+}
+#import-member-excel input[type='file']{
+  position: absolute;
+  visibility: hidden;
+}
+#import-member-excel input[type='button'], #import-member-excel input[type='reset']{
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 2px 15px;
+  font-size: 18px;
+  background-color: blue;
+  color: white;
+  border: 1px solid white;
+}
+#import-member-excel input[type='button']:hover{
+  background-color: rgb(0, 0, 200);
+}
+#import-member-excel input[type='button']:active{
+  background-color: #ececec;
+}
+#filename{
+  display: block;
+  position: absolute;
+  top: -10px;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  color: rgb(20, 17, 207);
+  font-weight: bold;
+}
+.importBtn{
+  margin-top: 15px;
+}
+/* 导入成功 */
+#success_text, #exists_text{
+  display: block;
+  min-height: 30px;
+  line-height: 30px;
+  color: green;
+  text-align: center;
+}
+#exists_text{
+  color: red;
+}
