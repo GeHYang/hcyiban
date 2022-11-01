@@ -106,6 +106,9 @@ function createTable(){
     $.ajax({
       url: preUrl + "/duty/exportTable",
       dataType: 'json',
+      headers: {
+        "Authorization": localStorage.getItem("token")
+      },
       success(res){
         E.close();
         if(res.code == 200){

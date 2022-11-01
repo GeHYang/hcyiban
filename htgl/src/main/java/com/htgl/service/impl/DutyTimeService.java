@@ -38,7 +38,7 @@ public class DutyTimeService {
                     DutyTime dutyTime = new DutyTime();
                     dutyTime.setTime(num + "");
                     dutyTime.setDay(weeks[i]);
-                    while (rs.next()){
+                    while (rs.next() ){
                         User user = new User();
                         user.setSid(rs.getString("sid"));
                         user.setSname(rs.getString("sname"));
@@ -46,6 +46,7 @@ public class DutyTimeService {
                         user.setTid(rs.getString("tid"));
                         dutyTime.freeUsers.add(user);
                     }
+
                     num++;
                     dutyTimes.add(dutyTime);
                 }

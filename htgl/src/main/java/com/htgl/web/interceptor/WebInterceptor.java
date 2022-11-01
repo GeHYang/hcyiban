@@ -18,6 +18,7 @@ public class WebInterceptor implements HandlerInterceptor {
         response.setHeader("Access-Control-Allow-Methods", "*");
         // 校验token
         // 判断是否为登录接口
+//        return true;
         String uri = request.getRequestURI();
         if(uri.equals("/ht/user") && request.getMethod().toLowerCase().equals("post")){
             return true;

@@ -2,11 +2,9 @@ package com.htgl.web.controller;
 
 import com.htgl.entity.PageResult;
 import com.htgl.entity.QueryPageBean;
-import com.htgl.pojo1.DutyTime;
 import com.htgl.service.DutyService;
 import com.htgl.service.impl.DutyTimeService;
 import com.htgl.utils.ExcelTest;
-import com.htgl.utils.paiban.PabBan;
 import com.htgl.utils.response.ResponseUtils;
 import com.htgl.utils.response.entity.Response;
 import com.htgl.utils.response.entity.ResponseEnum;
@@ -16,8 +14,6 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
-import java.util.List;
-import java.util.Map;
 
 @RestController
 @Transactional

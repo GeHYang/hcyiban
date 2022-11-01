@@ -13,9 +13,9 @@ public class JDBCUtils {
     //载入配置文件
     static {
         DRIVER = "com.mysql.cj.jdbc.Driver";
-        URL = "jdbc:mysql://10.150.2.57:3306/hgl?serverTimezone=UTC";
+        URL = "jdbc:mysql://192.168.1.48:3306/hgl?serverTimezone=UTC";
         USERNAME = "root";
-        PASSWORD = "yibanjishubu";
+        PASSWORD = "123456";
     }
     static {
         try {
