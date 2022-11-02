@@ -23,7 +23,6 @@ public class WebInterceptor implements HandlerInterceptor {
         if(uri.equals("/ht/user") && request.getMethod().toLowerCase().equals("post")){
             return true;
         }
-
         String token = request.getHeader("Authorization");
         if(token != null && !token.equals("")){
             // token存在，校验合法性

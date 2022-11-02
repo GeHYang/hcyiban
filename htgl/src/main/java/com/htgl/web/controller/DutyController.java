@@ -116,6 +116,7 @@ public class DutyController {
     @RequestMapping("/exportTable")
     public Response createDutyTable(HttpServletRequest request){
         ExcelTest.export(dutyTimeService.getAllFreeTime(), path);
+//        ExcelTest.export(dutyTimeService.getAllFreeTime(), "F:/usr/");
         return ResponseUtils.respMsg(net + "/duty.xls");
     }
 

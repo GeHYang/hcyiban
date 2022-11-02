@@ -15,10 +15,11 @@ import java.util.List;
 @Service
 public class DutyTimeService {
 
-    List<DutyTime> dutyTimes = new ArrayList<>();
+    List<DutyTime> dutyTimes = null;
 
     //获取每个时间段的成员有空情况并进行一轮排序
     public List<DutyTime> getAllFreeTime(){
+        dutyTimes = new ArrayList<>();
         String []weeks = {"mon", "tue", "wed", "thurs", "fri", "sat"};
         String []times = {"8:00-9:25","9:50-12:00","14:40-16:05",
                 "16:30-17:55","19:40-21:05"};
